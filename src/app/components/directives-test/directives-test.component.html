@@ -1,0 +1,26 @@
+<app-slider [testPr]="secText" [size]="'small'"></app-slider>
+
+<div class="center">
+  <section id="content">
+    <!--Rendering div if favCar is defined-->
+    <div *ngIf="favCar">
+      <h2 class="sub-header">Favorite Car</h2>
+      <!--Using uppercase pipe-->
+      <h4>{{ favCar.model | uppercase }}</h4>
+      <span class="date">{{ favCar.year | checkYear }} </span>
+    </div>
+
+    <h2 class="sub-header">Available Models</h2>
+
+    <!--Using If directive to show div if array exists-->
+    <div id="articles" *ngIf="cars">
+      <!--Using For directive to iterate array. Getting index number-->
+      <div *ngFor="let car of cars; let i = index">
+        <!--Catching event fn (markFavEvent - Child) and exec parent fn (showFav - Parent)-->
+        <app-car [car]="car" [i]="i" (markFavEvent)="showFav($event)"></app-car>
+      </div>
+    </div>
+  </section>
+  <app-sidebar></app-sidebar>
+  <div class="clearfix"></div>
+</div>

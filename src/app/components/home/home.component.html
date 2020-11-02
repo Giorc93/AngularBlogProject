@@ -1,0 +1,19 @@
+<app-slider [testPr]="secText"></app-slider>
+
+<div class="center">
+  <section id="content">
+    <h2 clas="sub-header">Last Articles</h2>
+    <div>
+      <h2 class="sub-header" *ngIf="!lastArticles">Loading articles..</h2>
+    </div>
+    <div id="articles" *ngIf="lastArticles">
+      <!--Using For directive to iterate array. Getting index number-->
+      <div *ngFor="let article of lastArticles; let i = index">
+        <!--Catching event fn (markFavEvent - Child) and exec parent fn (showFav - Parent)-->
+        <app-article [article]="article" [i]="i"></app-article>
+      </div>
+    </div>
+  </section>
+  <app-sidebar></app-sidebar>
+  <div class="clearfix"></div>
+</div>

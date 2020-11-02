@@ -1,0 +1,104 @@
+<app-slider [testPr]="secText" [size]="'small'"></app-slider>
+
+<div class="center">
+  <section id="content">
+    <h1>Form Component</h1>
+    <!--Creating Angular Form #formName executing onSubmit() created on component.ts -->
+    <form class="full-form" #userForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <!--Sending data using data binding. -->
+        <input
+          type="text"
+          name="name"
+          #name="ngModel"
+          [(ngModel)]="user.name"
+          required
+          pattern="[a-zA-Z ]+"
+        />
+      </div>
+      <div *ngIf="name.invalid && name.touched">
+        <small *ngIf="name.errors.required">Name required</small>
+        <small *ngIf="name.errors.pattern">Use only letters and space</small>
+      </div>
+
+      <div class="form-group">
+        <label for="surName">Surname</label>
+        <input
+          type="text"
+          name="surName"
+          #surName="ngModel"
+          [(ngModel)]="user.surname"
+          required
+          pattern="[a-zA-Z ]+"
+        />
+      </div>
+      <div *ngIf="surName.invalid && surName.touched">
+        <small *ngIf="surName.errors.required">Surname required</small>
+        <small *ngIf="surName.errors.pattern"
+          >Use only letters and spaces</small
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="bio">Biography</label>
+        <textarea
+          name="bio"
+          #bio="ngModel"
+          [(ngModel)]="user.bio"
+          required
+        ></textarea>
+      </div>
+      <div *ngIf="bio.invalid && bio.touched">
+        <small *ngIf="bio.errors.required">Bio required</small>
+      </div>
+
+      <div class="form-group radio-button">
+        <input
+          type="radio"
+          name="genre"
+          value="man"
+          #genre="ngModel"
+          [(ngModel)]="user.genre"
+        />Man
+        <input
+          type="radio"
+          name="genre"
+          value="woman"
+          #genre="ngModel"
+          [(ngModel)]="user.genre"
+        />Woman
+        <input
+          type="radio"
+          name="genre"
+          value="other"
+          #genre="ngModel"
+          [(ngModel)]="user.genre"
+        />Other
+      </div>
+      <small *ngIf="genre.invalid && genre.touched">Bio required</small>
+      <div class="clearfix"></div>
+      <input
+        type="submit"
+        value="Send"
+        class="btn btn-success"
+        [disabled]="userForm.invalid"
+      />
+    </form>
+
+    <h2 class="subheader">Events</h2>
+    <!--Click event-->
+    <h5>Click Event</h5>
+    <button (click)="clickEvent()">Click</button>
+    <hr />
+    <!--Blur event-->
+    <h5>Blur Event</h5>
+    <input type="text" [(ngModel)]="field" (blur)="onBlur()" />
+    {{ field }}
+    <!--Keyup event-->
+    <h5>Keyup Event</h5>
+    <input type="text" (keyup.enter)="keyEvent()" />
+  </section>
+  <app-sidebar></app-sidebar>
+  <div class="clearfix"></div>
+</div>

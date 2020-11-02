@@ -1,0 +1,30 @@
+<div class="center">
+  <section id="content">
+    <article class="article-item article-detail">
+      <div class="image-wrap">
+        <img
+          src="{{ url + 'getImage/' + article.image }}"
+          alt="test-img"
+          *ngIf="article.image != null"
+        />
+        <img
+          src="https://via.placeholder.com/150"
+          alt="test-img"
+          *ngIf="article.image == null"
+        />
+      </div>
+      <h1 class="sub-header">{{ article.title }}</h1>
+      <span class="date">{{ article.date | amLocale: "es" | amTimeAgo }} </span>
+      <p>{{ article.content }}</p>
+
+      <div class="clearfix"></div>
+      <a [routerLink]="['/blog/editArt', article._id]" class="btn btn-edit"
+        >Edit Article</a
+      >
+      <a (click)="deleteArticle()" class="btn btn-delete">Delete Article</a>
+    </article>
+  </section>
+
+  <app-sidebar></app-sidebar>
+  <div class="clearfix"></div>
+</div>

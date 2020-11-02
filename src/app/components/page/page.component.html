@@ -1,0 +1,39 @@
+<app-slider [testPr]="secText" [size]="'small'"></app-slider>
+
+<div class="center">
+  <section id="content">
+    <h2 class="subheader">Name</h2>
+
+    <!--Conditional using ngIf and ng-template
+<div *ngIf="name && surname; else noParam">
+  <p>Name: {{ name }}</p>
+  <p>Surname: {{ surname }}</p>
+</div> -->
+
+    <!--Using ngIf, then, else-->
+    <div *ngIf="name && surname; then urlParam; else noParam"></div>
+
+    <ng-template #urlParam>
+      <p>Name: {{ name }}</p>
+      <p>Surname: {{ surname }}</p>
+    </ng-template>
+
+    <!--<div *ngIf="!name || !surname">
+  <h3>No URL parameters</h3>
+</div> Using another IF to validate -->
+
+    <ng-template #noParam>
+      <h3>No URL parameters</h3>
+    </ng-template>
+
+    <button class="btn btn-success center" (click)="redirect()">
+      Take me to form
+    </button>
+    <hr />
+    <button class="btn btn-success center" (click)="setParams()">
+      Set Parameters
+    </button>
+  </section>
+  <app-sidebar></app-sidebar>
+  <div class="clearfix"></div>
+</div>

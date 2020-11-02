@@ -1,0 +1,17 @@
+<aside id="sidebar">
+  <div id="nav-blog" class="sidebar-item">
+    <h3>What you can do</h3>
+    <a [routerLink]="['/newArt']" class="btn btn-success">Create article</a>
+  </div>
+  <div id="search" class="sidebar-item">
+    <h3>Search</h3>
+    <p>Find what you are looking for</p>
+    <form #searchForm="ngForm" (ngSubmit)="searchArticle()">
+      <div class="form-group">
+        <!--Sending data using data binding. -->
+        <input type="text" name="searchString" [(ngModel)]="searchString" />
+        <input type="submit" value="Search" class="btn btn-success" />
+      </div>
+    </form>
+  </div>
+</aside>

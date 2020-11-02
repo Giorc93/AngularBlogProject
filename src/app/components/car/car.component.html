@@ -1,0 +1,26 @@
+<article class="article-item" id="article-template">
+  <div class="image-wrap">
+    <img src="{{ car.image }}" alt="test-img" />
+  </div>
+  <h3>{{ i }} - {{ car.model }}</h3>
+  <span class="date">5 minutes ago</span>
+  <!--<span class="year" [style.font-weight]="car.year > 2019 ? 'lighter' : 'bolder'">{{
+      car.year
+    }}</span> Using [style.attr]-->
+  <!--<span class="year" [ngStyle]="{ 'font-size': '45px' }">{{ car.year }}</span> Using ngStyle-->
+  <!--<span
+      [class.year-bolder]="car.year > 2019"
+      [class.year-lighter]="car.year <= 2019"
+      >{{ car.year }}
+    </span> Attr format-->
+  <span
+    [ngClass]="{
+      'year-bolder': car.year > 2019,
+      'year-lighter': car.year <= 2019
+    }"
+    >{{ car.year }}
+  </span>
+  <a href="#">See more</a>
+  <button (click)="markFav($event, car)">Favorite</button>
+  <div class="clearfix"></div>
+</article>

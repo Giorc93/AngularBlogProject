@@ -1,0 +1,28 @@
+<article class="article-item" id="article-template">
+  <div class="image-wrap">
+    <img
+      src="{{ url + 'getImage/' + article.image }}"
+      alt="test-img"
+      *ngIf="article.image != null"
+    />
+    <img
+      src="https://via.placeholder.com/150"
+      alt="test-img"
+      *ngIf="article.image == null"
+    />
+  </div>
+  <h3>{{ i }} - {{ article.title }}</h3>
+  <span class="date">{{ article.date | amLocale: "es" | amTimeAgo }}</span>
+  <!--<span class="year" [style.font-weight]="car.year > 2019 ? 'lighter' : 'bolder'">{{
+        car.year
+      }}</span> Using [style.attr]-->
+  <!--<span class="year" [ngStyle]="{ 'font-size': '45px' }">{{ car.year }}</span> Using ngStyle-->
+  <!--<span
+        [class.year-bolder]="car.year > 2019"
+        [class.year-lighter]="car.year <= 2019"
+        >{{ car.year }}
+      </span> Attr format-->
+  <p>{{ article.content }}</p>
+  <a [routerLink]="['/blog/article', article._id]">See more... </a>
+  <div class="clearfix"></div>
+</article>
